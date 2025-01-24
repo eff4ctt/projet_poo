@@ -39,6 +39,12 @@ void Instrument::jouer_part(string part, string rythme) {
     { "rapide", 0.5 }
     };
 
+    map<string, float> instr = {
+    { "Piano", 1.0 },
+    { "Guitare", 0.98 },
+    { "Xylophone", 1.05 }
+    };
+
     ifstream fichier(part);
     cout << "Essai d'ouvrir le fichier : " << part << endl;
 
@@ -58,7 +64,7 @@ void Instrument::jouer_part(string part, string rythme) {
             if (note != "0") {
                 cout << "[" << nom << "] Note: " << note << ", Duree: " << duration << " secondes" << endl;
                 int son = note_to_frequency[note];
-                Beep(son, duration * 3000);
+                Beep(son * instr[get_nom()], duration * 3000);
             }
             else {
                 cout << "[" << nom << "] Silence, Duree: " << duration << " secondes" << endl;
