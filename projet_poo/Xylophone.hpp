@@ -6,7 +6,7 @@
 class Xylophone : public Instrument {
 public:
     Xylophone();
-    virtual void jouer_note(string note, string rythme) override;
+    void jouer_note(string note, string rythme) override;
 
 };
 
