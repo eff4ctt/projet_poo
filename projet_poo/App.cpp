@@ -71,7 +71,7 @@ void App::jouer_note() {
     bool arret = false;
     while (!arret) {
         string note;
-        cout << "Entrez la note a jouer (ex: C4, D#, F#) : ";
+        cout << "Entrez la note a jouer (ex: C4) : ";
         cin >> note;
         if (note == "q") {
             return;
