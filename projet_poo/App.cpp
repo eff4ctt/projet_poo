@@ -100,7 +100,7 @@ void App::jouer_part() {
     cout << "Entrez le rythme (lent, normal, rapide) : ";
     cin >> rythme;
 
-    instrument->jouer_part(cheminFichier, rythme);
+    instrument->jouer_part(cheminFichier, rythme, instrument->get_nom());
 }
 
 void App::run() {
