@@ -4,6 +4,8 @@
 #include <sstream>
 #include <thread>
 #include <chrono>
+#include <map>
+
 using namespace std;
 
 Instrument::Instrument(string n) {
@@ -19,6 +21,12 @@ void Instrument::jouer_note(string note, string rythme) {
 }
 
 void Instrument::jouer_part(string part, string rythme) {
+    map<string, float> ryth_l = {
+    { "lent", 2.0 },
+    { "normal", 1.0 },
+    { "rapide", 0.5 }
+    };
+
     ifstream fichier(part);
     cout << "Essai d'ouvrir le fichier : " << part << endl;
 
@@ -35,13 +43,13 @@ void Instrument::jouer_part(string part, string rythme) {
 
         if (stream >> note >> duree) {
             if (note != "0") {
-                cout << "[" << nom << "] Note: " << note << ", Duree: " << duree << " secondes" << endl;
+                cout << "[" << nom << "] Note: " << note << ", Duree: " << duree * ryth_l[rythme] << " secondes" << endl;
             }
             else {
-                cout << "[" << nom << "] Silence, Duree: " << duree << " secondes" << endl;
+                cout << "[" << nom << "] Silence, Duree: " << duree * ryth_l[rythme] << " secondes" << endl;
             }
 
-            this_thread::sleep_for(chrono::duration<double>(duree));
+            this_thread::sleep_for(chrono::duration<double>(duree * ryth_l[rythme]));
         }
         else {
             cerr << "Erreur de format dans la ligne : " << ligne << endl;
