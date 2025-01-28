@@ -24,8 +24,10 @@ void Xylophone::jouer_note(string note, string rythme) {
     };
     map<string, float> instr = {
     { "Piano", 1.0 },
-    { "Guitare", 0.98 },
-    { "Xylophone", 1.05 }
+    { "Guitare", 0.1 },
+    { "Xylophone", 2.5 },
+    { "ContreBasse", 0.01 },
+    { "Harmonica", 2.0 }
     };
     cout << "[Xylophone - " << rythme << "] : " << note << endl;
     Beep(note_to_frequency[note] * instr[get_nom()], 1000 * ryth_l[rythme]);

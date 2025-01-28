@@ -129,12 +129,16 @@
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="Guitare.hpp" />
+    <ClInclude Include="Harmonica.hpp" />
     <ClInclude Include="Instrument.hpp" />
     <ClInclude Include="Xylophone.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="ContreBasse.cpp" />
+    <ClCompile Include="ContreBasse.hpp" />
     <ClCompile Include="Guitare.cpp" />
+    <ClCompile Include="Harmonica.cpp" />
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piano.cpp" />

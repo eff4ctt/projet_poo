@@ -41,8 +41,10 @@ void Instrument::jouer_part(string part, string rythme, string instrument) {
 
     map<string, float> instr = {
     { "Piano", 1.0 },
-    { "Guitare", 0.5 },
-    { "Xylophone", 1.5 }
+    { "Guitare", 0.1 },
+    { "Xylophone", 2.5 },
+    { "ContreBasse", 0.01 },
+    { "Harmonica", 2.0 }
     };
 
     ifstream fichier(part);

@@ -2,9 +2,13 @@
 #include "Piano.hpp"
 #include "Xylophone.hpp"
 #include "Guitare.hpp"
+#include "ContreBasse.hpp"
+#include "Harmonica.hpp"
 #include <iostream>
 #include <memory>
 #include <map>
+#include <fstream>
+
 
 App::App() : instrument(nullptr) {}
 
@@ -22,6 +26,8 @@ void App::choisir_instrument() {
     cout << "1. Piano\n";
     cout << "2. Xylophone\n";
     cout << "3. Guitare\n";
+    cout << "4. ContreBasse\n";
+    cout << "5. Harmonica\n";
     cout << "Entrez votre choix : ";
 
     int choix;
@@ -39,6 +45,14 @@ void App::choisir_instrument() {
     case 3:
         instrument = make_unique<Guitare>();
         cout << "Instrument choisi : Guitare\n";
+        break;
+    case 4:
+        instrument = make_unique<ContreBasse>();
+        cout << "Instrument choisi : ContreBasse\n";
+        break;
+    case 5:
+        instrument = make_unique<Harmonica>();
+        cout << "Instrument choisi : Harmonica\n";
         break;
     default:
         cout << "Choix invalide. Aucun instrument sélectionné.\n";
@@ -61,6 +75,18 @@ void App::jouer_note() {
     {"G#7", 3322}, {"A7", 3520}, {"A#7", 3729}, {"B7", 3951}, {"C8", 4186}, {"C#8", 4435}, {"D8", 4699}, {"D#8", 4978}
     };
 
+    map<string, float> ryth_l = {
+    { "lent", 2.0 },
+    { "normal", 1.0 },
+    { "rapide", 0.5 }
+    };
+
+    ofstream outFile("notes_jouees.txt", ios::app);
+    if (!outFile) {
+        cerr << "Erreur : impossible d'ouvrir le fichier notes_jouees.txt\n";
+        return;
+    }
+
     if (!instrument) {
         cout << "Veuillez d'abord choisir un instrument.\n";
         return;
@@ -79,6 +105,7 @@ void App::jouer_note() {
         auto existe = note_to_frequency.find(note);
         if (existe != note_to_frequency.end()) {
             instrument->jouer_note(note, rythme);
+            outFile << note << " " << ryth_l[rythme] << endl;
         }
         else {
             cout << "Cette note n'existe pas \n";
@@ -104,6 +131,7 @@ void App::jouer_part() {
 }
 
 void App::run() {
+    ofstream outFile("notes_jouees.txt", std::ios::trunc);
     bool arret = false;
 
     while (!arret) {
