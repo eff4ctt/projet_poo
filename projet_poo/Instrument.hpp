@@ -12,7 +12,7 @@ public:
     Instrument(string n);
 
     virtual void jouer_note(string note, string rythme);
-    virtual void jouer_part(string part, string rythme, string instrument);
+    virtual void jouer_part(string part, string rythme);
 
 
     string get_nom();

@@ -19,7 +19,7 @@ void Instrument::jouer_note(string note, string rythme) {
     cout << "[" << nom << "] Note: " << note << ", Rythme: " << rythme << endl;
 }
 
-void Instrument::jouer_part(string part, string rythme, string instrument) {
+void Instrument::jouer_part(string part, string rythme) {
     map<std::string, int> note_to_frequency = {
     {"B0", 31}, {"C1", 33}, {"C#1", 35}, {"D1", 37}, {"D#1", 39}, {"E1", 41}, {"F1", 44}, {"F#1", 46}, {"G1", 49}, {"G#1", 52},
     {"A1", 55}, {"A#1", 58}, {"B1", 62}, {"C2", 65}, {"C#2", 69}, {"D2", 73}, {"D#2", 78}, {"E2", 82}, {"F2", 87}, {"F#2", 93},
@@ -66,7 +66,7 @@ void Instrument::jouer_part(string part, string rythme, string instrument) {
             if (note != "0") {
                 cout << " [" << nom << "] Note: " << note << ", Duree: " << duration << " secondes" << endl;
                 int son = note_to_frequency[note];
-                Beep(son * instr[instrument], duration * 3000);
+                Beep(son * instr[nom], duration * 3000);
             }
             else {
                 cout << "[" << nom << "] Silence, Duree: " << duration << " secondes" << endl;
