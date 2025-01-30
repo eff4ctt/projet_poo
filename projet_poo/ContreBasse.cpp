@@ -29,7 +29,7 @@ void ContreBasse::jouer_note(string note, string rythme) {
     { "Harmonica", 2.0 }
     };
     cout << "[ContreBasse - " << rythme << "] : " << note << endl;
-    Beep(note_to_frequency[note] * instr[get_nom()], 1000 * ryth_l[rythme]);
+    Beep(note_to_frequency[note] * instr[get_nom()], 1000 * ryth_l[rythme]);// on recup la frequence de la note, on la multiplie par le chiffre associe a l intstrument et on multiplie 1 seconde par la vitesse du rythme
 }
 
 

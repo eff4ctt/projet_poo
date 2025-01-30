@@ -48,7 +48,7 @@ void Instrument::jouer_part(string part, string rythme, string instrument) {
     };
 
     ifstream fichier(part);
-    cout << "Essai d'ouvrir le fichier : " << part << endl;
+    cout << "Essai d'ouvrir le fichier : "  << part << endl;
 
     if (!fichier) {
         cerr << "Erreur : Impossible d'ouvrir le fichier " << part << endl;
@@ -61,10 +61,10 @@ void Instrument::jouer_part(string part, string rythme, string instrument) {
         string note;
         double duree;
 
-        if (stream >> note >> duree) {
+        if (stream >> note >> duree) { //verifie si le format de la ligne est bon
             double duration = duree * ryth_l[rythme];
             if (note != "0") {
-                cout << "[" << nom << "] Note: " << note << ", Duree: " << duration << " secondes" << endl;
+                cout << " [" << nom << "] Note: " << note << ", Duree: " << duration << " secondes" << endl;
                 int son = note_to_frequency[note];
                 Beep(son * instr[instrument], duration * 3000);
             }

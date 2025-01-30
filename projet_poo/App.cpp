@@ -81,7 +81,7 @@ void App::jouer_note() {
     { "rapide", 0.5 }
     };
 
-    ofstream outFile("notes_jouees.txt", ios::app);
+    ofstream outFile("notes_jouees.txt", ios::app); //ouvre le fichier dans lequel on va ecrire les notes
     if (!outFile) {
         cerr << "Erreur : impossible d'ouvrir le fichier notes_jouees.txt\n";
         return;
@@ -102,10 +102,10 @@ void App::jouer_note() {
         if (note == "q") {
             return;
         }
-        auto existe = note_to_frequency.find(note);
+        auto existe = note_to_frequency.find(note); //verifie si la note existe
         if (existe != note_to_frequency.end()) {
-            instrument->jouer_note(note, rythme);
-            outFile << note << " " << ryth_l[rythme] << endl;
+            instrument->jouer_note(note, rythme); //appelle la fonction jouer note de la classe de l'instrument choisi specifique
+            outFile << note << " " << ryth_l[rythme] << endl; //ecrit dans un fichier la note et la duree dans un format lisible de partition 
         }
         else {
             cout << "Cette note n'existe pas \n";
@@ -131,7 +131,7 @@ void App::jouer_part() {
 }
 
 void App::run() {
-    ofstream outFile("notes_jouees.txt", std::ios::trunc);
+    ofstream outFile("notes_jouees.txt", std::ios::trunc); //efface au lancement du programme le contenu du fichier dans le quel on ecrit les notes
     bool arret = false;
 
     while (!arret) {
